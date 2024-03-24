@@ -4,18 +4,18 @@ import React from "react";
 import { useUser, withPageAuthRequired } from "@auth0/nextjs-auth0/client";
 
 
-function HomePage() {
+function Profile() {
   const { user, isLoading } = useUser();
 
   return (
     <>
       {isLoading && <div> Loading </div>}
-      {user && <> Hi {user.name}, you are login successfully</>}
+      {user && <>{user.name}</>}
     </>
   );
 }
 
-export default withPageAuthRequired(HomePage, {
+export default withPageAuthRequired(Profile, {
   onRedirecting: () => <div> Loading </div>,
   onError: (error) => <div> Loading </div>,
 });
